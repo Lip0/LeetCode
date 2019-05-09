@@ -8,13 +8,20 @@ import java.util.HashMap;
 
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
-        int len=strs[0].length();
+        if(strs.length==0){
+            return "";
+        }
+        String str1=strs[0];
         String result;
-        for (int i = 0; i <len ; i++) {
-            for (String str: strs) {
-
+        for (int i=1;i<strs.length;i++) {
+            while(strs[i].indexOf(str1)!=0){
+                str1=str1.substring(0,str1.length()-1);
+                if(str1.equals("")){
+                    return "";
+                }
             }
         }
+        return str1;
     }
     @Test
     public void testLongestCommonPrefix(){
@@ -25,6 +32,7 @@ public class LongestCommonPrefix {
         // Print the answer
         System.out.println(answer);
     }
+
 }
 
 
